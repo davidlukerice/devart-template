@@ -1,16 +1,16 @@
 {
     "technologies": {
         "apis": [
-            "insert apis"
+            "Google Plus"
         ],
         "platforms": [
-            "insert platforms"
+            "Web"
         ],
         "toolkits": [
-            "insert toolkits"
+            "Node.js","Three.js","Mongodb","asNEAT","Ember App Kit", "Bootstrap"
         ]
     },
     "themes": [
-        "insert themes"
+        "Genetc Programming", "Sound", "Synthesis", "Collaborative"
     ]
 }
