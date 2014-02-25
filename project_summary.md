@@ -12,11 +12,11 @@ GenSynth is a collaborative web environment for evolving audio synthesizer engin
 ## Example Code
 
 ## Links to External Libraries
-[Example Link](http://www.google.com "Example Link")
+- [asNEAT](https://github.com/davidlukerice/asNEAT "asNEAT")
+- [Node](http://nodejs.org/ "Node")
+- [EmberJs](http://emberjs.com/ "EmberJs")
+- [Ember App Kit](https://github.com/stefanpenner/ember-app-kit "Ember App Kit") 
 
 ## Images & Videos
-NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
-
 ![Example Image](project_images/cover.jpg?raw=true "Example Image")
 
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
