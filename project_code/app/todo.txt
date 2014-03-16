@@ -1,0 +1,3 @@
+
+- Audio visualizer
+  * frequency, sonogram, 3dSonogram, waveform (like: http://chromium.googlecode.com/svn/trunk/samples/audio/javascript-processing.html)

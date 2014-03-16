@@ -40,14 +40,16 @@
 
   <!-- build:js(tmp/result) /assets/vendor.min.js -->
 
-    <script src="/vendor/jquery/jquery.js"></script>
-
     <!-- @if dist=false -->
+    <script src="/vendor/jquery/dist/jquery.js"></script>
     <script src="/vendor/handlebars/handlebars.js"></script>
     <script src="/vendor/ember/ember.js"></script>
+    <script src="/vendor/asNEAT/dist/asNEAT.js"></script>
     <!-- @endif --><!-- @if dist=true -->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/vendor/handlebars/handlebars.runtime.js"></script>
     <script src="/vendor/ember/ember.prod.js"></script>
+    <script src="/vendor/asNEAT/dist/asNEAT.min.js"></script>
     <!-- @endif -->
 
     <script src="/vendor/ember-data/ember-data.js"></script>
