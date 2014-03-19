@@ -91,10 +91,9 @@ module.exports = function(grunt) {
                      'createDistVersion'
                      ]);
 
-
   // Default Task
   // ------------------
-  grunt.registerTask('default', "Build (in debug mode) & test your application.", ['test']);
+  grunt.registerTask('default', "Run your server in development mode, auto-rebuilding when files change.", ['server']);
 
 
   // Servers
