@@ -41,9 +41,10 @@ module.exports = function(grunt) {
     if (target === 'debug') {
       // For `expressServer:debug`
 
-      // Add livereload middlware after lock middleware if enabled
+      // Add livereload middleware after lock middleware if enabled
       if (Helpers.isPackageAvailable("connect-livereload")) {
-        app.use(require("connect-livereload")());
+        var liveReloadPort = grunt.config('watch.options.livereload');
+        app.use(require("connect-livereload")({port: liveReloadPort}));
       }
 
       // These three lines simulate what the `copy:assemble` task does

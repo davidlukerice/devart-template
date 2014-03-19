@@ -5,12 +5,14 @@
     "jquery": "~1.11.0",
     "qunit": "~1.12.0",
     "ember": "~1.5.0-beta.4",
+    "ember-qunit": "https://github.com/rpflorence/ember-qunit.git#master",
     "ember-data": "~1.0.0-beta.7",
     "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
     "ic-ajax": "~0.3.0",
     "ember-testing-httpRespond": "~0.1.1",
     "bootstrap": "~3.1.1",
-    "asNEAT": "~0.3.0"
+    "asNEAT": "~0.3.0",
+    "asNEAT-visualizer": "~0.0.3"
   },
   "resolutions": {
     "ember": "~1.5.0-beta.4"
