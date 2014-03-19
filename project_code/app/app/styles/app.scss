@@ -4,32 +4,36 @@ html, body {
 }
 
 .evolver {
-
-}
-  .evolver .engines {
+  
+  .engines {
     border: 1px black solid;
-  }
-    .evolver .engines .active {
+
+    .active {
       margin: 5px 5px 0 0;
     }
-    .evolver .engines .engine {
+    .engine {
       margin: 5px 0 5px 0;
       padding: 5px;
-    }
-      .evolver .engines .engine .network svg {
+
+      .network svg {
         border: 1px black solid;
-      }
-  .evolver .controls {
+      }        
+    }
+  } // eo .engines
+
+  .controls {
     border: 1px black solid;
     padding: 5px 5px 0 0;
   }
-  .evolver .children {
+  .children {
     border: 1px black solid;
-  }
-    .evolver .children .child {
+    
+    .child {
       width: 100%;
       height: 150px;
       margin: 5px;
       background: darkgrey;
       border: 1px black solid;
-    }
+    }    
+  }
+} // eo .evolver
