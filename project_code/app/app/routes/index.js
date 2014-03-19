@@ -1,5 +1,13 @@
+
+var Network = require('asNEAT/network')['default'];
+
 export default Ember.Route.extend({
   model: function() {
-    return ['red', 'yellow', 'blue'];
+    return {
+      networks: [
+        new Network(),
+        new Network()
+      ]
+    };
   }
 });

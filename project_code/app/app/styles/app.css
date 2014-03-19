@@ -5,7 +5,7 @@ html, body {
 
 .evolver {
 
-} 
+}
   .evolver .engines {
     border: 1px black solid;
   }
@@ -15,9 +15,10 @@ html, body {
     .evolver .engines .engine {
       margin: 5px 0 5px 0;
       padding: 5px;
-      background: lightgrey;
-      height: 200px;
     }
+      .evolver .engines .engine .network svg {
+        border: 1px black solid;
+      }
   .evolver .controls {
     border: 1px black solid;
     padding: 5px 5px 0 0;

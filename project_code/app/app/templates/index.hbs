@@ -7,20 +7,15 @@
     </div>
   </div>
   <div class="row engines">
-    <div class="col-md-12">
-      <span class="pull-right active">(*)</span>
-      <div class="engine">
-        TODO: Engine
+    {{#each networks}}
+      {{graph-visualizer network=this}}
+    {{else}}
+      <div class="col-md-12">
+        No Networks
       </div>
-    </div>
+    {{/each}}
     <div class="col-md-12">
-      <span class="pull-right active">( )</span>
-      <div class="engine">
-        More Engines...
-      </div>
-    </div>
-    <div class="col-md-12">
-    Load from saved Engines
+    <button class="btn" disabled>Load from saved Engines</button>
     </div>
   </div>
 
