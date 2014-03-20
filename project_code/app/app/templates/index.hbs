@@ -6,8 +6,8 @@
       <h3>Engine Graphs/Parameter View</h3>
     </div>
   </div>
-  <div class="row engines">
-    {{#each networks}}
+  <div class="row instruments">
+    {{#each content.networks}}
       {{graph-visualizer network=this}}
     {{else}}
       <div class="col-md-12">
@@ -23,59 +23,25 @@
     <div class="col-md-12">
       Evolution Controls<br>
       Evo Distance [--------|---]<br>
-      <span class="control">[&lsaquo;] Back</span>
-      <span class="control">[@] Refresh</span>
-      <span class="control">[&rsaquo;] Next</span>
+      <button class="btn" disabled>[&lsaquo;] Back</button>
+      <button class="btn" disabled>[@] Refresh</button>
+      <button class="btn" disabled>[&rsaquo;] Next</button>
+      <br>
       Freeze Topology []<br>
       [Simple/Advance]<br>
     </div>
   </div>
 
   <div class="row children">
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
+    {{#each childNetworks}}
+      {{instrument-child network=this}}
+    {{else}}
+      <div class="col-md-4">
+        <div class="child">
+          No children
+        </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="child">
-        TODO: Children engines
-      </div>
-    </div>
+    {{/each}}
   </div>
+
 </div>
