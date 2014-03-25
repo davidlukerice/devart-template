@@ -35,6 +35,10 @@ html, body {
       margin: 5px;
       border: 1px black solid;
 
+      &.selected {
+        background: yellow;
+      }
+
       .controls {
         position: absolute;
         border: 0;

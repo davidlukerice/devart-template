@@ -24,8 +24,8 @@
       Evolution Controls<br>
       Evo Distance [--------|---]<br>
       <button class="btn" disabled>[&lsaquo;] Back</button>
-      <button class="btn" {{action "refresh"}}>[@] Refresh</button>
-      <button class="btn" disabled>[&rsaquo;] Next</button>
+      <button class="btn" {{action "refreshGeneration"}}>[@] Refresh</button>
+      <button class="btn" {{action "nextGeneration"}} {{bind-attr disabled="noChildrenSelected"}}>[&rsaquo;] Next</button>
       <br>
       Freeze Topology []<br>
       [Simple/Advance]<br>

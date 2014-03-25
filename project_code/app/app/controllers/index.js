@@ -27,9 +27,27 @@ export default Ember.Controller.extend({
     return children;
   }.property('content.networks.@each'),
 
+  selectedChildNetworks: function() {
+    var selectedNetworks = [];
+      _.forEach(this.get('childNetworks').toArray(), function(child) {
+        if (child.selected)
+          selectedNetworks.push(child);
+      });
+
+      return selectedNetworks;
+  }.property('childNetworks.@each.selected'),
+
+  noChildrenSelected: function() {
+    return this.get('selectedChildNetworks').length <= 0;
+  }.property('selectedChildNetworks.@each'),
+
   actions: {
-    refresh: function() {
+    refreshGeneration: function() {
       this.notifyPropertyChange('childNetworks');
+    },
+
+    nextGeneration: function() {
+      this.set('content.networks', this.get('selectedChildNetworks'));
     }
   }
 
