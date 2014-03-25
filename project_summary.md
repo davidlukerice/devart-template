@@ -8,6 +8,8 @@ GenSynth
 GenSynth is a collaborative web environment for evolving audio synthesizer engines with genetic programming. The idea is to provide an intuitive way for users to evolve their own instruments and traverse the possible sound space.
 
 ## Link to Prototype
+** _DISCLAIMER_: Turn down audio before testing, a lot of the generated sounds right now are pretty harsh. **
+- [GenSynth](https://dl.dropboxusercontent.com/u/1633096/Dev/devArt/index.html "GenSynth")
 
 ## Example Code
 
