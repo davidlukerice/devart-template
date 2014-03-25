@@ -4,3 +4,8 @@
 
 
 - change visualizers to 100% width
+
+- Posts
+3: Visualization Types
+4: Graph Visualization Algorithm
+5: Evolution Algorithm

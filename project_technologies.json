@@ -7,7 +7,7 @@
             "Web"
         ],
         "toolkits": [
-            "Node.js","Three.js","Mongodb","asNEAT","Ember App Kit", "Bootstrap"
+            "Node.js","Three.js","Mongodb","asNEAT","D3","asNEAT-visualizer","Ember App Kit", "Bootstrap"
         ]
     },
     "themes": [

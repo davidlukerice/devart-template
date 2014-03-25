@@ -13,6 +13,8 @@ GenSynth is a collaborative web environment for evolving audio synthesizer engin
 
 ## Links to External Libraries
 - [asNEAT](https://github.com/davidlukerice/asNEAT "asNEAT")
+- [asNEAT-visualizer](https://github.com/davidlukerice/asNEAT-visualizer "asNEAT-visualizer")
+- [D3](https://github.com/mbostock/d3 "D3")
 - [Node](http://nodejs.org/ "Node")
 - [EmberJs](http://emberjs.com/ "EmberJs")
 - [Ember App Kit](https://github.com/stefanpenner/ember-app-kit "Ember App Kit") 

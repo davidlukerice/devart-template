@@ -4,6 +4,7 @@ IEC, interactive evolutionary commputation, is where human users determine the f
 
 My Thesis is centered around taking CIE ideas and leveraging them to evolve synth engines. When I was about to start designing out and developing the needed platform for this, I happily discovered google's DevArt project and decided join in and develop the software as part of the competition!
 
-Some basic designs for the website
+Some basic designs for the website:
+
+The front page will help users discover instruments that others have created.
 ![FrontPage](../project_images/2014-02-14 00.15.44_UI_1.jpg?raw=true "FrontPage")
-![EvolutionPage](../project_images/2014-02-14 00.15.54_UI_2.jpg?raw=true "EvolutionPage")
