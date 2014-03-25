@@ -27,4 +27,10 @@ export default Ember.Controller.extend({
     return children;
   }.property('content.networks.@each'),
 
+  actions: {
+    refresh: function() {
+      this.notifyPropertyChange('childNetworks');
+    }
+  }
+
 });
