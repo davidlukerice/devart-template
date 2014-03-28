@@ -22,5 +22,5 @@ GenSynth is a collaborative web environment for evolving audio synthesizer instr
 - [Ember App Kit](https://github.com/stefanpenner/ember-app-kit "Ember App Kit") 
 
 ## Images & Videos
-![Cover](project_images/cover.jpg?raw=true "Cover")
+![Evolving in action](project_images/evolvingScreenshot.png?raw=true "Evolving in action")
 
