@@ -1,3 +1,5 @@
+# Network Visualization of an Instrument
+
 In the last post, I described how audio can be visualized in a way that helps engage users during the evolutionary process. The first three are fairly straight forward to create and already have several working web audio [examples](http://chromium.googlecode.com/svn/trunk/samples/audio/javascript-processing.html "examples"). The forth, though, is a bit of a challenge. The instrument network visualization needs to automatically organize itself and represent each of the various nodes.
 
 # First Naïve Solution
