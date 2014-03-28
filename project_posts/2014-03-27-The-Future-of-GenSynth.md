@@ -1,3 +1,5 @@
+# The Future of GenSynth
+
 The main goal going into Google’s DevArt competition was to build momentum in my thesis project. In that regard, GenSynth has made considerable advances and positioned itself for continued development in the months to come. Although there’s quite a bit left to develop, the platform is already starting to take shape!
 
 # Todo
