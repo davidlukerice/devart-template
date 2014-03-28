@@ -4,8 +4,8 @@ var Visualizer = require('asNEAT/asNEAT-visualizer')['default'];
 export default Ember.Component.extend({
   // passed in
   network: null,
-  width: 800,
-  height: 400,
+  width: "100%",
+  height: "100%",
   padding: 50,
 
   // created on init

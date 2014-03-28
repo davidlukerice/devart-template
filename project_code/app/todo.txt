@@ -1,7 +1,4 @@
 
-- Audio visualizer
-  - change visualizers to 100% width
-
 Planned:
 - Previous history
 - Better visualization?
@@ -10,19 +7,6 @@ Planned:
 - Better sound?
   -* ...
 
-- Feedback form
-  - For now just: link to https://github.com/davidlukerice/devart-template/issues
-  - And twitter account for messages
-
-- Meta tags for fb, g+, tw sharing
-- fb, g+, tw sharing
-
-- DevArt Posts
-3: Visualization Types
-4: Graph Visualization Algorithm
-5: Evolution Algorithm (and future development)
-
-
 Future:
 
 - More uniform aesthetic design
@@ -30,11 +14,16 @@ Future:
 - Onscreen keyboard control
 - MIDI hardware keyboard control
 
+- Page: Feedback form
 - Page: Login / Register / Authentication (Google+, Facebook, Tw)
 
-- Freeze topology
-- Evolution Distance control
-- More advanced evolution controls
+- Meta tags for fb, g+, tw sharing
+- fb, g+, tw sharing
+
+- Controls
+  - Freeze topology
+  - Evolution Distance control
+  - More advanced evolution controls
 
 - Page: (+) Manual Tweaking Page
 - Page: (?) Find instruments

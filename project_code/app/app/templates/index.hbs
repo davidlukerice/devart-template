@@ -1,9 +1,16 @@
 
 <div class="evolver">
-  
+  <p>
+    GenSynth is a proof of concept platform for evolving new synthetic instruments.<br>
+    Each new generation of instruments is a mixture of children bred and mutated from the previous generation.<br>
+
+    <br>
+    <span class="label label-warning">Warning</span> You may want to turn down the volume at first. Some of the sounds can be loud and harsh to listen to!
+  </p>
+
   <div class="row">
     <div class="col-md-12">
-      <h3>Engine Graphs/Parameter View</h3>
+      <h3>Parent Instruments</h3>
     </div>
   </div>
   <div class="row instruments">
@@ -14,21 +21,36 @@
         No Networks
       </div>
     {{/each}}
+    {{!--
     <div class="col-md-12">
-    <button class="btn" disabled>Load from saved Engines</button>
+      <button class="btn btn-primary" disabled>Load from saved Engines</button>
+    </div>
+    --}}
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Children Instruments <small>Select at least one to evolve next generation</small></h3>
     </div>
   </div>
 
   <div class="row controls">
     <div class="col-md-12">
-      Evolution Controls<br>
-      Evo Distance [--------|---]<br>
-      <button class="btn" disabled>[&lsaquo;] Back</button>
-      <button class="btn" {{action "refreshGeneration"}}>[@] Refresh</button>
-      <button class="btn" {{action "nextGeneration"}} {{bind-attr disabled="noChildrenSelected"}}>[&rsaquo;] Next</button>
+      {{!--
+      <button class="btn btn-primary" disabled>[&lsaquo;] Back</button>
+      --}}
+      <button class="btn btn-primary" {{action "refreshGeneration"}}>[@] Refresh</button>
+      <button class="btn btn-primary" {{action "nextGeneration"}} {{bind-attr disabled="noChildrenSelected"}}>[&rsaquo;] Next</button>
       <br>
-      Freeze Topology []<br>
-      [Simple/Advance]<br>
+      {{!--
+      Evolution Step Size <input type="range" min="0" max="1" disabled><br>
+      Freeze Topology <input type="checkbox" disabled><br>
+      <div class="input-group">
+        <button class="btn btn-primary" disabled>Simple</button>
+        <button class="btn btn-default" disabled>Advance</button>
+      </div>
+      --}}
     </div>
   </div>
 

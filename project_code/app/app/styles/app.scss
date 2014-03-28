@@ -1,48 +1,69 @@
 
+$selectedColor: #158cba;
+$hoverColor: #15b5ba;
+
+$borderColor: #e7e7e7;
+
 html, body {
-  margin: 20px;
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mainContent {
+  padding: 0 40px 10px 40px;
 }
 
 .evolver {
-  
-  .instruments {
-    border: 1px black solid;
 
+  .instruments {
+    border: 2px $borderColor solid;
+    padding: 5px;
     .active {
       margin: 5px 5px 0 0;
     }
   } // eo .instruments
 
   .instrument {
-    margin: 5px 0 5px 0;
+    margin: 5px 0 35px 0;
     padding: 5px;
+    height: 300px;
+    border: 2px $borderColor solid;
+
+    .controls {
+      position: absolute;
+      border: 0;
+      padding: 0 10px 0 0;
+    }
   }
 
   .instrument svg {
-    border: 1px black solid;
+    border-width: 0 1px 4px 1px;
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
   }
 
   .controls {
-    border: 1px black solid;
-    padding: 5px 5px 0 0;
+    text-align: center;
+    margin-bottom: 5px;
   }
+
   .children {
-    border: 1px black solid;
+    border: 2px $borderColor solid;
     
     .child {
+      position: relative;
       width: 100%;
       height: 250px;
       margin: 5px;
-      border: 1px black solid;
+      border: 2px $borderColor solid;
+      cursor: pointer;
 
-      &.selected {
-        background: yellow;
+      &:hover {
+        background: $hoverColor;
       }
 
-      .controls {
-        position: absolute;
-        border: 0;
-        padding: 0;
+      &.selected {
+        background: $selectedColor;
       }
     }    
   }

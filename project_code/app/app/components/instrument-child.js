@@ -11,8 +11,8 @@ export default GraphVisualizer.extend({
   }.property('network.selected'),
 
   padding: 60,
-  width: 360,
-  height: 235,
+  width: "100%",
+  height: "100%",
 
   actions: {
     toggleSelected: function() {

@@ -1,7 +1,7 @@
 <div class="col-md-4">
   <div {{action "toggleSelected"}} {{bind-attr class=":child :instrument selected"}}>
     <span class="controls">
-      Child Instrument <button {{action "play"}} class="btn">Play</button>
+      <button {{action "play" bubbles=false}} class="btn btn-success">Play</button>
     </span>
     <div class="visualizer">
     </div>

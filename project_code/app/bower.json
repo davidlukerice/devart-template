@@ -12,7 +12,7 @@
     "ember-testing-httpRespond": "~0.1.1",
     "bootstrap": "~3.1.1",
     "asNEAT": "master",
-    "asNEAT-visualizer": "~0.0.3",
+    "asNEAT-visualizer": "master",
     "lodash": "~2.4.1",
     "d3": "~3.4.3"
   }

@@ -1,8 +1,9 @@
 
 <div class="col-md-12 ">
-  <span class="pull-right active">(*)</span>
   <div class="instrument">
-    Graph Visualizer <button {{action "play"}} class="btn">Play</button>
+    <div class="controls">
+      <button {{action "play" bubbles=false}} class="btn btn-success">Play</button>
+    </div>
     <div class="visualizer">
     </div>
   </div>
