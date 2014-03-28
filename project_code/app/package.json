@@ -1,10 +1,10 @@
 {
-  "name": "app-kit",
+  "name": "genSynth",
   "namespace": "appkit",
   "APIMethod": "stub",
   "proxyURL": "http://localhost:8000",
   "proxyPath": "/api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/stefanpenner/ember-app-kit.git"
+    "url": "git://github.com/davidlukerice/devart-template.git"
   },
   "author": "",
   "license": "MIT",
