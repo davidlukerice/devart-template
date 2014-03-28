@@ -1,7 +1,8 @@
 {
     "technologies": {
         "apis": [
-            "g+"
+            "Google Plus",
+            "Google Analytics API"
         ],
         "platforms": [
             "web"
