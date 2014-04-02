@@ -6,7 +6,6 @@ export default Ember.Component.extend({
   network: null,
   width: "100%",
   height: "100%",
-  padding: 50,
 
   // created on init
   visualization: null,
@@ -17,12 +16,11 @@ export default Ember.Component.extend({
 
   initVisualization: function() {
     Ember.run.scheduleOnce('afterRender', this, function() {
-      var visualization = Visualizer.createVisualization({
+      var visualization = Visualizer.createForceVisualization({
         network: this.get('network'),
         selector: this.get('selector'),
         width: this.get('width'),
-        height: this.get('height'),
-        padding: this.get('padding')
+        height: this.get('height')
       });
 
       this.set('visualization', visualization);
