@@ -3,12 +3,23 @@ var Utils = require('asNEAT/utils')['default'];
 export default Ember.Controller.extend({
 
   // set by route
-  // {networks: [asNEAT.Network, ...]}
+  // networks is a history of networks (list of list of networks)
+  // and the top one is currently the parent set
+  // {networks: [[asNEAT.Network, ...],[...],...]}
   content: null,
+
+  noPreviousParents: function() {
+    return this.get('content.networks').length <= 1;
+  }.property('content.networks.@each'),
+
+  parentNetworks: function() {
+    var networks = this.get('content.networks');
+    return networks[networks.length-1];
+  }.property('content.networks.@each'),
 
   childNetworks: function() {
     var numChildren = 9,
-        networks = this.get('content.networks'),
+        networks = this.get('parentNetworks'),
         weightPerNetwork = 1/networks.length,
         children = [], i, child, selected;
 
@@ -25,7 +36,7 @@ export default Ember.Controller.extend({
     }
 
     return children;
-  }.property('content.networks.@each'),
+  }.property('parentNetworks.@each'),
 
   selectedChildNetworks: function() {
     var selectedNetworks = [];
@@ -46,8 +57,15 @@ export default Ember.Controller.extend({
       this.notifyPropertyChange('childNetworks');
     },
 
+    backGeneration: function() {
+      // TODO: Confirm box
+      this.get('content.networks').popObject();
+    },
+
     nextGeneration: function() {
-      this.set('content.networks', this.get('selectedChildNetworks'));
+      // push the currently selected networks on top
+      this.get('content.networks').pushObject(
+        this.get('selectedChildNetworks'));
 
       // always keep scrolled on the bottom
       Ember.run.scheduleOnce('afterRender', this, function() {

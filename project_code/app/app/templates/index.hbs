@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="row instruments">
-    {{#each content.networks}}
+    {{#each parentNetworks}}
       {{graph-visualizer network=this}}
     {{else}}
       <div class="col-md-12">
@@ -41,9 +41,7 @@
 
   <div class="row controls">
     <div class="col-md-12">
-      {{!--
-      <button class="btn btn-primary" disabled>[&lsaquo;] Back</button>
-      --}}
+      <button class="btn btn-primary" {{action "backGeneration"}} {{bind-attr disabled="noPreviousParents"}}>[&lsaquo;] Back</button>
       <button class="btn btn-primary" {{action "refreshGeneration"}}>[@] Refresh</button>
       <button class="btn btn-primary" {{action "nextGeneration"}} {{bind-attr disabled="noChildrenSelected"}}>[&rsaquo;] Next</button>
       <br>

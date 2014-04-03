@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     }
 
     return {
-      networks: networks
+      networks: [networks]
     };
   },
 
