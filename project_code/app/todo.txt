@@ -1,8 +1,7 @@
 Current:
-- Always scroll to bottom of page on "Next"
+- Previous history
 
 Planned:
-- Previous history
 - Better visualization?
   -* More information on each node
   -* Different types

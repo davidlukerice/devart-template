@@ -48,6 +48,11 @@ export default Ember.Controller.extend({
 
     nextGeneration: function() {
       this.set('content.networks', this.get('selectedChildNetworks'));
+
+      // always keep scrolled on the bottom
+      Ember.run.scheduleOnce('afterRender', this, function() {
+        $(document).scrollTop($(document).height());
+      });
     }
   }
 
