@@ -1,5 +1,5 @@
 Current:
-- Previous history
+- Onscreen keyboard control
 
 Planned:
 - Better visualization?
@@ -12,7 +12,6 @@ Future:
 
 - More uniform aesthetic design
 
-- Onscreen keyboard control
 - MIDI hardware keyboard control
 
 - Page: Feedback form
