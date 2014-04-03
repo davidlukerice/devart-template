@@ -60,18 +60,20 @@ export default Ember.Controller.extend({
     backGeneration: function() {
       // TODO: Confirm box
       this.get('content.networks').popObject();
+      scrollToBottom();
     },
 
     nextGeneration: function() {
       // push the currently selected networks on top
       this.get('content.networks').pushObject(
         this.get('selectedChildNetworks'));
-
-      // always keep scrolled on the bottom
-      Ember.run.scheduleOnce('afterRender', this, function() {
-        $(document).scrollTop($(document).height());
-      });
+      scrollToBottom();
     }
   }
-
 });
+
+function scrollToBottom() {
+  Ember.run.scheduleOnce('afterRender', function() {
+    $(document).scrollTop($(document).height());
+  });
+}
