@@ -1,37 +1,37 @@
-<div class="onscreenKeyboard">
+<div class="onscreenKeyboard" {{action "hotkeyPlayNote" on="keyDown"}}>
   
   <div class="whiteKeys">
-    <span class="key white" {{action "playNote" "c4" on="mouseDown"}}><span class="note">c3</span><span class="hotkey" data-key="a">a</span></span>
-    <span class="key white" {{action "playNote" "d4" on="mouseDown"}}><span class="note">d3</span><span class="hotkey" data-key="s">s</span></span>
-    <span class="key white" {{action "playNote" "e4" on="mouseDown"}}><span class="note">e3</span><span class="hotkey" data-key="d">d</span></span>
-    <span class="key white" {{action "playNote" "f4" on="mouseDown"}}><span class="note">f3</span><span class="hotkey" data-key="f">f</span></span>
-    <span class="key white" {{action "playNote" "g4" on="mouseDown"}}><span class="note">g3</span><span class="hotkey" data-key="g">g</span></span>
+    {{piano-key note="c4" hotkey="a" instrument=instrument}}
+    {{piano-key note="d4" hotkey="s" instrument=instrument}}
+    {{piano-key note="e4" hotkey="d" instrument=instrument}}
+    {{piano-key note="f4" hotkey="f" instrument=instrument}}
+    {{piano-key note="g4" hotkey="g" instrument=instrument}}
 
-    <span class="key white" {{action "playNote" "a4" on="mouseDown"}}><span class="note">a4</span><span class="hotkey" data-key="h">h</span></span>
-    <span class="key white" {{action "playNote" "b4" on="mouseDown"}}><span class="note">b4</span><span class="hotkey" data-key="j">j</span></span>
-    <span class="key white" {{action "playNote" "c5" on="mouseDown"}}><span class="note">c4</span><span class="hotkey" data-key="k">k</span></span>
-    <span class="key white" {{action "playNote" "d5" on="mouseDown"}}><span class="note">d4</span><span class="hotkey" data-key="l">l</span></span>
-    <span class="key white" {{action "playNote" "e5" on="mouseDown"}}><span class="note">e4</span><span class="hotkey" data-key=";">;</span></span>
-    <span class="key white" {{action "playNote" "f5" on="mouseDown"}}><span class="note">f4</span><span class="hotkey" data-key='\"'>&quot;</span></span>
-    <span class="key white" {{action "playNote" "g5" on="mouseDown"}}><span class="note">g4</span><span class="hotkey" data-key=""></span></span>
+    {{piano-key note="a4" hotkey="h" instrument=instrument}}
+    {{piano-key note="b4" hotkey="j" instrument=instrument}}
+    {{piano-key note="c5" hotkey="k" instrument=instrument}}
+    {{piano-key note="d5" hotkey="l" instrument=instrument}}
+    {{piano-key note="e5" hotkey=";" instrument=instrument}}
+    {{piano-key note="f5" hotkey='"' instrument=instrument}}
+    {{piano-key note="g5" hotkey="" instrument=instrument}}
 
-    <span class="key white" {{action "playNote" "a5" on="mouseDown"}}><span class="note">a5</span><span class="hotkey" data-key=""></span></span>
-    <span class="key white" {{action "playNote" "b5" on="mouseDown"}}><span class="note">b5</span><span class="hotkey" data-key=""></span></span>
+    {{piano-key note="a5" hotkey="" instrument=instrument}}
+    {{piano-key note="b5" hotkey="" instrument=instrument}}
   </div>
 
   <div class="blackKeys">
-    <span class="key black" {{action "playNote" "c4#" on="mouseDown"}}><span class="note">c3#</span><span class="hotkey" data-key="w">w</span></span>
-    <span class="key black" {{action "playNote" "d4#" on="mouseDown"}}><span class="note">d3#</span><span class="hotkey" data-key="e">e</span></span>
+    {{piano-key note="c4#" hotkey="w" instrument=instrument}}
+    {{piano-key note="d4#" hotkey="e" instrument=instrument}}
     <span class="blank"></span>
-    <span class="key black" {{action "playNote" "f4#" on="mouseDown"}}><span class="note">f3#</span><span class="hotkey" data-key="t">t</span></span>
-    <span class="key black" {{action "playNote" "g4#" on="mouseDown"}}><span class="note">g3#</span><span class="hotkey" data-key="y">y</span></span>
-    <span class="key black" {{action "playNote" "a4#" on="mouseDown"}}><span class="note">a4#</span><span class="hotkey" data-key="u">u</span></span>
+    {{piano-key note="f4#" hotkey="t" instrument=instrument}}
+    {{piano-key note="g4#" hotkey="y" instrument=instrument}}
+    {{piano-key note="a4#" hotkey="u" instrument=instrument}}
     <span class="blank"></span>
-    <span class="key black" {{action "playNote" "c5#" on="mouseDown"}}><span class="note">c4#</span><span class="hotkey" data-key="o">o</span></span>
-    <span class="key black" {{action "playNote" "d5#" on="mouseDown"}}><span class="note">d4#</span><span class="hotkey" data-key="a">a</span></span>
+    {{piano-key note="c5#" hotkey="o" instrument=instrument}}
+    {{piano-key note="d5#" hotkey="p" instrument=instrument}}
     <span class="blank"></span>
-    <span class="key black" {{action "playNote" "f5#" on="mouseDown"}}><span class="note">f4#</span><span class="hotkey" data-key=""></span></span>
-    <span class="key black" {{action "playNote" "g5#" on="mouseDown"}}><span class="note">g4#</span><span class="hotkey" data-key=""></span></span>
-    <span class="key black" {{action "playNote" "a5#" on="mouseDown"}}><span class="note">a5#</span><span class="hotkey" data-key=""></span></span>
+    {{piano-key note="f5#" hotkey="" instrument=instrument}}
+    {{piano-key note="g5#" hotkey="" instrument=instrument}}
+    {{piano-key note="a5#" hotkey="" instrument=instrument}}
   </div>
 </div>

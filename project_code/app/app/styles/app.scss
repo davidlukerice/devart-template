@@ -102,6 +102,7 @@ html, body {
       margin: 0 5px 0 5px;
       background: rgb(100, 100, 100);
       margin-right: 0px;
+      @include pointer-events(auto);
 
       &:hover {
         background: rgb(50, 50, 50);
