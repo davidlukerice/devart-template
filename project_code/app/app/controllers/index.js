@@ -52,6 +52,10 @@ export default Ember.Controller.extend({
     return this.get('selectedChildNetworks').length <= 0;
   }.property('selectedChildNetworks.@each'),
 
+  activeInstrument: function() {
+    return this.get('parentNetworks')[0];
+  }.property('parentNetworks.@each'),
+
   actions: {
     refreshGeneration: function() {
       this.notifyPropertyChange('childNetworks');
