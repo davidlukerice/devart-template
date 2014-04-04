@@ -23,11 +23,9 @@ export default Ember.Component.extend({
     // setting up events from document because we can't
     // get focus on multiple piano-keys at once for key events
     // to fire correctly
-    Ember.run.scheduleOnce('afterRender', this, function() {
-      $(document).keydown(function(e){
-        if(e.keyCode === hotkey)
-          self.playNote();
-      });
+    $(document).keydown(function(e){
+      if(e.keyCode === hotkey)
+        self.playNote();
     });
 
   }.on('init'),
