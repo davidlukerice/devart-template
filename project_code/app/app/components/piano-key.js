@@ -7,11 +7,17 @@ export default Ember.Component.extend({
   colemakHotkey: "q",
   instrument: null,
 
-  useColemak: true,
+  usingColemak: true,
 
   tagName: 'span',
 
   releaseHandler: null,
+
+  activeHotkey: function() {
+    return this.get('usingColemak') ?
+          this.get('colemakHotkey') :
+          this.get('hotkey');
+  }.property('usingColemak'),
 
   isPlaying: function() {
     return typeof this.get('releaseHandler') === 'function';
@@ -19,15 +25,15 @@ export default Ember.Component.extend({
 
   setupKeyEvents: function() {
     var self = this,
-        hotkey = this.get('useColemak') ?
-          this.get('colemakHotkey') :
-          this.get('hotkey');
+        hotkey = this.get('activeHotkey');
 
     // special character cases
     if (hotkey === ";")
       hotkey = 186;
-    else if (hotkey === '"')
+    else if (hotkey === "'")
       hotkey = 222;
+    else if (hotkey === "]")
+      hotkey = 221;
     else
       hotkey = hotkey.toUpperCase().charCodeAt();
 
