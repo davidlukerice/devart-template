@@ -107,7 +107,7 @@ html, body {
       &:hover {
         background: rgb(50, 50, 50);
       }
-      &:active {
+      &.isPlaying {
         background: rgb(0, 0, 0);
       }
     }
@@ -131,7 +131,7 @@ html, body {
       &:hover {
         background: rgb(220, 220, 220);
         }
-      &:active {
+      &.isPlaying {
         background: rgb(150, 150, 150);
       }
     }

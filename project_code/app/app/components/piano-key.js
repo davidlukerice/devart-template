@@ -11,6 +11,12 @@ export default Ember.Component.extend({
 
   tagName: 'span',
 
+  releaseHandler: null,
+
+  isPlaying: function() {
+    return typeof this.get('releaseHandler') === 'function';
+  }.property('releaseHandler'),
+
   setupKeyEvents: function() {
     var self = this,
         hotkey = this.get('useColemak') ?
@@ -29,15 +35,25 @@ export default Ember.Component.extend({
     // get focus on multiple piano-keys at once for key events
     // to fire correctly
     $(document).keydown(function(e){
-      if(e.keyCode === hotkey)
+      if(e.keyCode === hotkey && !self.get('isPlaying'))
         self.playNote();
+    });
+
+    $(document).keyup(function(e){
+      if(e.keyCode === hotkey)
+        self.releaseNote();
     });
 
   }.on('init'),
 
   playNote: function() {
     var instrument = this.get('instrument'),
-        note = this.get('note');
+        note = this.get('note'),
+        releaseHandler = this.get('releaseHandler');
+
+    // make sure to release any previous notes playing
+    if (typeof releaseHandler === "function")
+      releaseHandler();
 
     if (!instrument) {
       throw 'No instrument to play!';
@@ -51,7 +67,17 @@ export default Ember.Component.extend({
       node.stepFromRootNote = steps;
     });
 
-    instrument.play();
+    releaseHandler = instrument.playHold();
+    this.set('releaseHandler', releaseHandler);
+  },
+
+  releaseNote: function() {
+    var releaseHandler = this.get('releaseHandler');
+
+    if (typeof releaseHandler === "function") {
+      releaseHandler();
+      this.set('releaseHandler', null);
+    }
   },
 
   mouseDown: function() {
@@ -61,17 +87,6 @@ export default Ember.Component.extend({
 
   mouseUp: function() {
     Utils.log('mouseUp');
-  },
-
-  keyDown: function() {
-    Utils.log('keyDown');
-  },
-  keydown: function() {
-    Utils.log('keydown');
-  },
-
-  keyUp: function() {
-    Utils.log('keyUp');
+    this.releaseNote();
   }
-
 });
