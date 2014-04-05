@@ -16,14 +16,16 @@ export default Ember.Component.extend({
     var self = this;
 
     var onkeyDownHandler = function(e) {
-      e.preventDefault();
-      if(e.keyCode === 32)
+      if(e.keyCode === 32) {
+        e.preventDefault();
         self.set('sustaining', true);
+      }
     };
     var onkeyUpHandler = function(e) {
-      e.preventDefault();
-      if(e.keyCode === 32)
+      if(e.keyCode === 32) {
+        e.preventDefault();
         self.set('sustaining', false);
+      }
     };
     this.set('onkeyDownHandler', onkeyDownHandler);
     this.set('onkeyUpHandler', onkeyUpHandler);
@@ -40,7 +42,7 @@ export default Ember.Component.extend({
     $(document).off('keydown', this.get('onkeyDownHandler'));
     $(document).off('keyup', this.get('onkeyUpHandler'));
   },
-  
+
   actions: {
     toggleSustain: function() {
       this.set('sustaining', !this.get('sustaining'));

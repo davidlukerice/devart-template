@@ -53,6 +53,7 @@ export default Ember.Component.extend({
     var onkeyDownHandler = function(e) {
       var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey) {
+        e.preventDefault();
         self.set('keyIsDown', true);
         if (!self.get('isPlaying'))
           self.playNote();
@@ -61,6 +62,7 @@ export default Ember.Component.extend({
     var onkeyUpHandler = function(e) {
       var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey) {
+        e.preventDefault();
         self.set('keyIsDown', false);
         self.tryReleaseNote();
       }
