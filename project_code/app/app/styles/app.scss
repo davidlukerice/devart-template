@@ -78,22 +78,32 @@ html, body {
   }
 } // eo .evolver
 
+$controlsWidth: 100px;
+$halfControlsWidth: $controlsWidth / 2;
+
 .onscreenKeyboard {
   position: fixed;
-  left: calc(50% - 271px);
+  left: 50%;
+  margin-left: -271px - $controlsWidth;
   bottom: 0;
   height: 100px;
-  width: 542px;;
+  width: 644px;
+  border: $borderColor 1px solid;
 
   & * {
     @include user-select(none);
     cursor: pointer;
   }
 
+  .onscreenPianoControls {
+    width: 100px;
+    border: 1px $borderColor solid;
+  }
+
   .blackKeys {
     position:absolute;
     top:0;
-    left:20px;
+    left: $controlsWidth + 20px;
     @include pointer-events(none);
 
     .key {
@@ -131,7 +141,7 @@ html, body {
   .whiteKeys {
     position: absolute;
     top:0;
-    left: 0;
+    left: $controlsWidth;
 
     .key {
       background: rgb(255, 255, 240);

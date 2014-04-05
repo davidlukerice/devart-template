@@ -1,35 +1,44 @@
 <div class="onscreenKeyboard" {{action "hotkeyPlayNote" on="keyDown"}}>
   
+  <div class="onscreenPianoControls">
+    <span class="controlLabel">Hotkey Layout</span><br>
+    {{view Ember.Select
+       content=hotkeyLayouts
+       optionValuePath="content.accessor"
+       optionLabelPath="content.type"
+       value=selectedHotkeyLayout}}
+  </div>
+
   <div class="whiteKeys">
-    {{piano-key note="c4"  hotkey="a" colemakHotkey="a" instrument=instrument}}
-    {{piano-key note="d4"  hotkey="s" colemakHotkey="r" instrument=instrument}}
-    {{piano-key note="e4"  hotkey="d" colemakHotkey="s" instrument=instrument}}
-    {{piano-key note="f4"  hotkey="f" colemakHotkey="t" instrument=instrument}}
-    {{piano-key note="g4"  hotkey="g" colemakHotkey="d" instrument=instrument}}
-    {{piano-key note="a4"  hotkey="h" colemakHotkey="h" instrument=instrument}}
-    {{piano-key note="b4"  hotkey="j" colemakHotkey="n" instrument=instrument}}
-    {{piano-key note="c5"  hotkey="k" colemakHotkey="e" instrument=instrument}}
-    {{piano-key note="d5"  hotkey="l" colemakHotkey="i" instrument=instrument}}
-    {{piano-key note="e5"  hotkey=";" colemakHotkey="o" instrument=instrument}}
-    {{piano-key note="f5"  hotkey="'" colemakHotkey="'" instrument=instrument}}
-    {{piano-key note="g5"  hotkey=""  colemakHotkey=""  instrument=instrument}}
-    {{piano-key note="a5"  hotkey=""  colemakHotkey=""  instrument=instrument}}
-    {{piano-key note="b5"  hotkey=""  colemakHotkey=""  instrument=instrument}}
+    {{piano-key note="c4"  hotkey="a" colemakHotkey="a" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="d4"  hotkey="s" colemakHotkey="r" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="e4"  hotkey="d" colemakHotkey="s" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="f4"  hotkey="f" colemakHotkey="t" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="g4"  hotkey="g" colemakHotkey="d" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="a4"  hotkey="h" colemakHotkey="h" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="b4"  hotkey="j" colemakHotkey="n" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="c5"  hotkey="k" colemakHotkey="e" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="d5"  hotkey="l" colemakHotkey="i" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="e5"  hotkey=";" colemakHotkey="o" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="f5"  hotkey="'" colemakHotkey="'" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="g5"  hotkey=""  colemakHotkey=""  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="a5"  hotkey=""  colemakHotkey=""  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="b5"  hotkey=""  colemakHotkey=""  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
   </div>
 
   <div class="blackKeys">
-    {{piano-key note="c4#" hotkey="w" colemakHotkey="w" instrument=instrument}}
-    {{piano-key note="d4#" hotkey="e" colemakHotkey="f" instrument=instrument}}
+    {{piano-key note="c4#" hotkey="w" colemakHotkey="w" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="d4#" hotkey="e" colemakHotkey="f" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
     <span class="blank"></span>
-    {{piano-key note="f4#" hotkey="t" colemakHotkey="g" instrument=instrument}}
-    {{piano-key note="g4#" hotkey="y" colemakHotkey="j" instrument=instrument}}
-    {{piano-key note="a4#" hotkey="u" colemakHotkey="l" instrument=instrument}}
+    {{piano-key note="f4#" hotkey="t" colemakHotkey="g" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="g4#" hotkey="y" colemakHotkey="j" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="a4#" hotkey="u" colemakHotkey="l" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
     <span class="blank"></span>
-    {{piano-key note="c5#" hotkey="o" colemakHotkey="y" instrument=instrument}}
-    {{piano-key note="d5#" hotkey="p" colemakHotkey=";" instrument=instrument}}
+    {{piano-key note="c5#" hotkey="o" colemakHotkey="y" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="d5#" hotkey="p" colemakHotkey=";" hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
     <span class="blank"></span>
-    {{piano-key note="f5#" hotkey="]"  colemakHotkey="]"  instrument=instrument}}
-    {{piano-key note="g5#" hotkey=""  colemakHotkey=""  instrument=instrument}}
-    {{piano-key note="a5#" hotkey=""  colemakHotkey=""  instrument=instrument}}
+    {{piano-key note="f5#" hotkey="]"  colemakHotkey="]"  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="g5#" hotkey=""  colemakHotkey=""  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
+    {{piano-key note="a5#" hotkey=""  colemakHotkey=""  hotkeyLayout=selectedHotkeyLayout instrument=instrument}}
   </div>
 </div>

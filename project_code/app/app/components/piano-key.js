@@ -7,25 +7,19 @@ export default Ember.Component.extend({
   colemakHotkey: "q",
   instrument: null,
 
-  usingColemak: true,
+  hotkeyLayout: "colemakHotkey",
 
   tagName: 'span',
 
   releaseHandler: null,
 
   activeHotkey: function() {
-    return this.get('usingColemak') ?
-          this.get('colemakHotkey') :
-          this.get('hotkey');
-  }.property('usingColemak'),
+    var hotkeyAccesor = this.get('hotkeyLayout');
+    return this.get(hotkeyAccesor);
+  }.property('hotkeyLayout'),
 
-  isPlaying: function() {
-    return typeof this.get('releaseHandler') === 'function';
-  }.property('releaseHandler'),
-
-  setupKeyEvents: function() {
-    var self = this,
-        hotkey = this.get('activeHotkey');
+  activeHotkeyKeyCode: function() {
+    var hotkey = this.get('activeHotkey');
 
     // special character cases
     if (hotkey === ";")
@@ -37,15 +31,27 @@ export default Ember.Component.extend({
     else
       hotkey = hotkey.toUpperCase().charCodeAt();
 
+    return hotkey;
+  }.property('activeHotkey'),
+
+  isPlaying: function() {
+    return typeof this.get('releaseHandler') === 'function';
+  }.property('releaseHandler'),
+
+  setupKeyEvents: function() {
+    var self = this;
+
     // setting up events from document because we can't
     // get focus on multiple piano-keys at once for key events
     // to fire correctly
     $(document).keydown(function(e){
+      var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey && !self.get('isPlaying'))
         self.playNote();
     });
 
     $(document).keyup(function(e){
+      var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey)
         self.releaseNote();
     });
