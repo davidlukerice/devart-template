@@ -12,6 +12,7 @@ $selectedColor: #158cba;
 $hoverColor: #15b5ba;
 
 $borderColor: #e7e7e7;
+$backgroundColor: #f8f8f8;
 
 html, body {
   overflow-x: hidden;
@@ -89,6 +90,7 @@ $halfControlsWidth: $controlsWidth / 2;
   height: 100px;
   width: 644px;
   border: $borderColor 1px solid;
+  background: $backgroundColor;
 
   & * {
     @include user-select(none);
@@ -98,6 +100,11 @@ $halfControlsWidth: $controlsWidth / 2;
   .onscreenPianoControls {
     width: 100px;
     border: 1px $borderColor solid;
+
+    .controlLabel {
+      display: inline-block;
+      margin-top: 3px;
+    }
   }
 
   .blackKeys {
@@ -182,4 +189,10 @@ $halfControlsWidth: $controlsWidth / 2;
       color: black;
     }
   }
+}
+
+.btn.active.btn-primary {
+  border-color: #0c516c;
+  margin-top: 1px;
+  border-bottom-width: 3px;
 }

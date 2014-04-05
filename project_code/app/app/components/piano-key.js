@@ -1,17 +1,18 @@
 var Utils = require('asNEAT/utils')['default'];
 
 export default Ember.Component.extend({
-
+  // parameters
   note: "a4",
   hotkey: "q",
   colemakHotkey: "q",
   instrument: null,
-
   hotkeyLayout: "colemakHotkey",
-
+  sustaining: false,
+  
   tagName: 'span',
 
   releaseHandler: null,
+  keyIsDown: false,
 
   activeHotkey: function() {
     var hotkeyAccesor = this.get('hotkeyLayout');
@@ -38,6 +39,13 @@ export default Ember.Component.extend({
     return typeof this.get('releaseHandler') === 'function';
   }.property('releaseHandler'),
 
+  sustainingChange: function() {
+    var sustaining = this.get('sustaining'),
+        keyIsDown = this.get('keyIsDown');
+    if (!sustaining && !keyIsDown)
+      this.turnOffInstrument();
+  }.observes('sustaining'),
+
   setupKeyEvents: function() {
     var self = this;
 
@@ -46,14 +54,18 @@ export default Ember.Component.extend({
     // to fire correctly
     $(document).keydown(function(e){
       var hotkey = self.get('activeHotkeyKeyCode');
-      if(e.keyCode === hotkey && !self.get('isPlaying'))
+      if(e.keyCode === hotkey && !self.get('isPlaying')) {
+        self.set('keyIsDown', true);
         self.playNote();
+      }
     });
 
     $(document).keyup(function(e){
       var hotkey = self.get('activeHotkeyKeyCode');
-      if(e.keyCode === hotkey)
-        self.releaseNote();
+      if(e.keyCode === hotkey) {
+        self.set('keyIsDown', false);
+        self.tryReleaseNote();
+      }
     });
 
   }.on('init'),
@@ -83,9 +95,15 @@ export default Ember.Component.extend({
     this.set('releaseHandler', releaseHandler);
   },
 
-  releaseNote: function() {
-    var releaseHandler = this.get('releaseHandler');
+  tryReleaseNote: function() {
+    var sustaining = this.get('sustaining');
+    if (!sustaining) {
+      this.turnOffInstrument();
+    }
+  },
 
+  turnOffInstrument: function() {
+    var releaseHandler = this.get('releaseHandler');
     if (typeof releaseHandler === "function") {
       releaseHandler();
       this.set('releaseHandler', null);
@@ -93,12 +111,12 @@ export default Ember.Component.extend({
   },
 
   mouseDown: function() {
-    Utils.log('mouseDown');
+    this.set('keyIsDown', true);
     this.playNote();
   },
 
   mouseUp: function() {
-    Utils.log('mouseUp');
-    this.releaseNote();
+    this.set('keyIsDown', false);
+    this.tryReleaseNote();
   }
 });
