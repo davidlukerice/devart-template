@@ -193,6 +193,15 @@ $halfControlsWidth: $controlsWidth / 2;
     }
   }
 }
+.floatingControls {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  padding: 5px;
+  
+  border: $borderColor 1px solid;
+  background: $backgroundColor;
+}
 
 .btn.active.btn-primary {
   border-color: #0c516c;

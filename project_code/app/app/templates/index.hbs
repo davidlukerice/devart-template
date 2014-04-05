@@ -71,9 +71,12 @@
 
 </div>
 
-<button type="button"
-  {{action toggleOnscreenPiano}}
-  {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Onscreen Piano</button>
+<div class="floatingControls">
+  Inputs<br>
+  <button type="button"
+    {{action toggleOnscreenPiano}}
+    {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Onscreen Piano</button>
+</div>
 
 {{#if  usingOnscreenPiano}}
   {{onscreen-piano instrument=activeInstrument}}

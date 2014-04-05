@@ -78,6 +78,17 @@ export default Ember.Controller.extend({
 
     toggleOnscreenPiano: function() {
       this.set('usingOnscreenPiano', !this.get('usingOnscreenPiano'));
+      var scrollAmount;
+
+      // Scroll down/up when showing/hiding the piano
+      if (this.get('usingOnscreenPiano'))
+        scrollAmount = $(document).scrollTop()+100;
+      else
+        scrollAmount = $(document).scrollTop()-100;
+
+      Ember.run.scheduleOnce('afterRender', function() {
+        $(document).scrollTop(scrollAmount);
+      });
     }
   }
 });
