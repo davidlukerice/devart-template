@@ -82,6 +82,9 @@ html, body {
 $controlsWidth: 100px;
 $halfControlsWidth: $controlsWidth / 2;
 
+.onscreenKeyboardSpacer {
+  height:100px;
+}
 .onscreenKeyboard {
   position: fixed;
   left: 50%;
