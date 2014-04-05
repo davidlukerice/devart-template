@@ -4,13 +4,18 @@ export default Ember.Component.extend({
 
   note: "a4",
   hotkey: "q",
+  colemakHotkey: "q",
   instrument: null,
+
+  useColemak: true,
 
   tagName: 'span',
 
   setupKeyEvents: function() {
     var self = this,
-        hotkey = this.get('hotkey');
+        hotkey = this.get('useColemak') ?
+          this.get('colemakHotkey') :
+          this.get('hotkey');
 
     // special character cases
     if (hotkey === ";")
@@ -50,23 +55,23 @@ export default Ember.Component.extend({
   },
 
   mouseDown: function() {
-    console.log('mouseDown');
+    Utils.log('mouseDown');
     this.playNote();
   },
 
   mouseUp: function() {
-    console.log('mouseUp');
+    Utils.log('mouseUp');
   },
 
   keyDown: function() {
-    console.log('keyDown');
+    Utils.log('keyDown');
   },
   keydown: function() {
-    console.log('keydown');
+    Utils.log('keydown');
   },
 
   keyUp: function() {
-    console.log('keyUp');
+    Utils.log('keyUp');
   }
 
 });
