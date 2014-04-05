@@ -196,6 +196,8 @@ $halfControlsWidth: $controlsWidth / 2;
 
 .btn.active.btn-primary {
   border-color: #0c516c;
-  margin-top: 1px;
-  border-bottom-width: 3px;
+  margin-top: 2px;
+  border-bottom-width: 2px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
