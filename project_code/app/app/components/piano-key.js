@@ -52,9 +52,10 @@ export default Ember.Component.extend({
     var self = this;
     var onkeyDownHandler = function(e) {
       var hotkey = self.get('activeHotkeyKeyCode');
-      if(e.keyCode === hotkey && !self.get('isPlaying')) {
+      if(e.keyCode === hotkey) {
         self.set('keyIsDown', true);
-        self.playNote();
+        if (!self.get('isPlaying'))
+          self.playNote();
       }
     };
     var onkeyUpHandler = function(e) {

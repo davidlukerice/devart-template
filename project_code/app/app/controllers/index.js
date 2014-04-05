@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   // {networks: [[asNEAT.Network, ...],[...],...]}
   content: null,
 
-  usingOnscreenPiano: false,
+  usingOnscreenPiano: true,
 
   noPreviousParents: function() {
     return this.get('content.networks').length <= 1;
