@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
   // {networks: [[asNEAT.Network, ...],[...],...]}
   content: null,
 
+  usingOnscreenPiano: false,
+
   noPreviousParents: function() {
     return this.get('content.networks').length <= 1;
   }.property('content.networks.@each'),
@@ -72,6 +74,10 @@ export default Ember.Controller.extend({
       this.get('content.networks').pushObject(
         this.get('selectedChildNetworks'));
       scrollToBottom();
+    },
+
+    toggleOnscreenPiano: function() {
+      this.set('usingOnscreenPiano', !this.get('usingOnscreenPiano'));
     }
   }
 });

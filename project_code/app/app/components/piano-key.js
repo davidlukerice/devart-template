@@ -46,27 +46,31 @@ export default Ember.Component.extend({
       this.turnOffInstrument();
   }.observes('sustaining'),
 
+  onkeyDownHandler: null,
+  onkeyUpHandler: null,
   setupKeyEvents: function() {
     var self = this;
-
-    // setting up events from document because we can't
-    // get focus on multiple piano-keys at once for key events
-    // to fire correctly
-    $(document).keydown(function(e){
+    var onkeyDownHandler = function(e) {
       var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey && !self.get('isPlaying')) {
         self.set('keyIsDown', true);
         self.playNote();
       }
-    });
-
-    $(document).keyup(function(e){
+    };
+    var onkeyUpHandler = function(e) {
       var hotkey = self.get('activeHotkeyKeyCode');
       if(e.keyCode === hotkey) {
         self.set('keyIsDown', false);
         self.tryReleaseNote();
       }
-    });
+    };
+    this.set('onkeyDownHandler', onkeyDownHandler);
+    this.set('onkeyUpHandler', onkeyUpHandler);
+    // setting up events from document because we can't
+    // get focus on multiple piano-keys at once for key events
+    // to fire correctly
+    $(document).keydown(onkeyDownHandler);
+    $(document).keyup(onkeyUpHandler);
 
   }.on('init'),
 
@@ -118,5 +122,11 @@ export default Ember.Component.extend({
   mouseUp: function() {
     this.set('keyIsDown', false);
     this.tryReleaseNote();
+  },
+
+  willDestroy: function() {
+    this._super();
+    $(document).off('keydown', this.get('onkeyDownHandler'));
+    $(document).off('keyup', this.get('onkeyUpHandler'));
   }
 });

@@ -71,4 +71,10 @@
 
 </div>
 
-{{onscreen-piano instrument=activeInstrument}}
+<button type="button"
+  {{action toggleOnscreenPiano}}
+  {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Piano</button>
+
+{{#if  usingOnscreenPiano}}
+  {{onscreen-piano instrument=activeInstrument}}
+{{/if}}

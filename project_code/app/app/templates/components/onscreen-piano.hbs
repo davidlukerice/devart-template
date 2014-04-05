@@ -10,11 +10,9 @@
        value=selectedHotkeyLayout}}
     <br>
     <br>
-    {{#if sustaining}}
-      <button type="button" {{action releaseSustain}} class="btn btn-primary btn-xs active">Sustain " "</button>
-    {{else}}
-      <button type="button" {{action sustain}} class="btn btn-primary btn-xs">Sustain " "</button>
-    {{/if}} 
+    <button type="button"
+      {{action toggleSustain}}
+      {{bind-attr class=":btn :btn-primary :btn-xs sustaining:active"}}>Sustain " "</button>
   </div>
 
   <div class="whiteKeys">
