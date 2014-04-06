@@ -2,7 +2,8 @@
 import GraphVisualizer from 'appkit/components/graph-visualizer';
 
 export default GraphVisualizer.extend({
-  // passed in {instrument, isLive}
+  // passed in
+  // {network, selected, isLive}
   instrumentModel: null,
   makeLiveHandler: null,
 
@@ -12,8 +13,8 @@ export default GraphVisualizer.extend({
 
   // shadow element of network
   selected: function() {
-    return this.get('network.selected');
-  }.property('network.selected'),
+    return this.get('instrumentModel.selected');
+  }.property('instrumentModel.selected'),
 
   padding: 60,
   width: "100%",
@@ -21,7 +22,8 @@ export default GraphVisualizer.extend({
 
   actions: {
     toggleSelected: function() {
-      this.set('network.selected', !this.get('selected'));
+      this.set('instrumentModel.selected',
+        !this.get('instrumentModel.selected'));
     },
 
     makeLive: function() {

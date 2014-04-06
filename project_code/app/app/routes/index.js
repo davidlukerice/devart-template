@@ -9,7 +9,11 @@ export default Ember.Route.extend({
       var network = new Network();
       for (var x=0; x<numMutations; ++x)
         network.mutate();
-      networks.push(network);
+      networks.push(Ember.Object.create({
+        network: network,
+        isLive: false,
+        selected: false
+      }));
     }
 
     return {
