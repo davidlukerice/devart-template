@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
 
   usingOnscreenPiano: true,
 
+  activeInstrument: null,
+
   noPreviousParents: function() {
     return this.get('content.networks').length <= 1;
   }.property('content.networks.@each'),
@@ -34,8 +36,13 @@ export default Ember.Controller.extend({
 
     for (i=0; i<numChildren; ++i) {
       selected = Utils.weightedSelection(selections);
-      children.push(selected.clone().mutate());
+      child = selected.clone().mutate();
+      children.push(Ember.Object.create({
+        network: child,
+        isLive: i===0
+      }));
     }
+    this.set('activeInstrument', children[0]);
 
     return children;
   }.property('parentNetworks.@each'),
@@ -53,10 +60,6 @@ export default Ember.Controller.extend({
   noChildrenSelected: function() {
     return this.get('selectedChildNetworks').length <= 0;
   }.property('selectedChildNetworks.@each'),
-
-  activeInstrument: function() {
-    return this.get('parentNetworks')[0];
-  }.property('parentNetworks.@each'),
 
   actions: {
     refreshGeneration: function() {
@@ -89,6 +92,13 @@ export default Ember.Controller.extend({
       Ember.run.scheduleOnce('afterRender', function() {
         $(document).scrollTop(scrollAmount);
       });
+    },
+
+    makeLive: function(instrumentModel) {
+      // turn off old instrument and setup the new selected one
+      this.get('activeInstrument').set('isLive', false);
+      instrumentModel.set('isLive', true);
+      this.set('activeInstrument', instrumentModel);
     }
   }
 });

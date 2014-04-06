@@ -41,6 +41,8 @@ html, body {
 
     .controls {
       position: absolute;
+      width: 100%;
+      text-align: left;
       border: 0;
       padding: 0 10px 0 0;
     }
@@ -77,6 +79,35 @@ html, body {
       }
     }    
   }
+
+  .liveToggle {
+    display: inline-block;
+    float: right;
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: 1px solid black;
+
+    &:hover .liveIcon{
+      background: lightcoral;
+    }
+
+    .liveIcon {
+      display: inline-block;
+      top: 4px;
+      left: 4px;
+      width: 15px;
+      height: 15px;
+      position: relative;
+      border-radius: 15px;
+      
+      &.active {
+        background: red;
+      }
+    }
+  }
+
 } // eo .evolver
 
 $controlsWidth: 100px;

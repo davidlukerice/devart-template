@@ -59,7 +59,7 @@
 
   <div class="row children">
     {{#each childNetworks}}
-      {{instrument-child network=this}}
+      {{instrument-child instrumentModel=this makeLiveHandler="makeLive"}}
     {{else}}
       <div class="col-md-4">
         <div class="child">
@@ -79,5 +79,5 @@
 </div>
 
 {{#if  usingOnscreenPiano}}
-  {{onscreen-piano instrument=activeInstrument}}
+  {{onscreen-piano instrument=activeInstrument.network}}
 {{/if}}
