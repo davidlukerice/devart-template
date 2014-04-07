@@ -45,7 +45,8 @@ export default Ember.Controller.extend({
       children.push(Ember.Object.create({
         network: child,
         isLive: i===0,
-        selected: false
+        selected: false,
+        index: i
       }));
     }
     this.set('activeInstrument', children[0]);

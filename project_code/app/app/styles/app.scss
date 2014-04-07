@@ -81,6 +81,7 @@ html, body {
   }
 
   .liveToggle {
+    position: relative;
     display: inline-block;
     float: right;
     border-radius: 25px;
@@ -93,6 +94,12 @@ html, body {
       background: lightcoral;
     }
 
+    .liveHotkey {
+      position: absolute;
+      font-weight: bold;
+      left: 8px;
+      top: 1px;
+    }
     .liveIcon {
       display: inline-block;
       top: 4px;
