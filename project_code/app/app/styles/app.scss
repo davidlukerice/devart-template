@@ -28,10 +28,7 @@ html, body {
   .instruments {
     border: 2px $borderColor solid;
     padding: 5px;
-    .active {
-      margin: 5px 5px 0 0;
-    }
-  } // eo .instruments
+  }
 
   .instrument {
     position: relative;

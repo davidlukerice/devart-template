@@ -20,7 +20,9 @@
   </div>
   <div class="row instruments">
     {{#each parentNetworks}}
-      {{instrument-parent instrumentModel=this}}
+      {{instrument-parent
+        instrumentModel=this
+        makeLiveHandler="makeLive"}}
     {{else}}
       <div class="col-md-12">
         No Networks
@@ -59,7 +61,9 @@
 
   <div class="row children">
     {{#each childNetworks}}
-      {{instrument-child instrumentModel=this makeLiveHandler="makeLive"}}
+      {{instrument-child
+        instrumentModel=this
+        makeLiveHandler="makeLive"}}
     {{else}}
       <div class="col-md-4">
         <div class="child">
