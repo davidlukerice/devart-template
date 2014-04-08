@@ -3,8 +3,14 @@ var Visualizer = require('asNEAT/asNEAT-visualizer')['default'];
 
 export default Ember.Component.extend({
   // passed in
-  // {network, selected, isLive}
+  // {network, selected, isLive, index}
   instrumentModel: null,
+  makeLiveHandler: null,
+
+  network: function() {
+    return this.get('instrumentModel.network');
+  }.property('instrumentModel.network'),
+
   width: "100%",
   height: "100%",
 
@@ -14,6 +20,11 @@ export default Ember.Component.extend({
   selector: function() {
     return "#"+this.elementId+' .visualizer';
   }.property('elementId'),
+
+  // shadow element of network
+  selected: function() {
+    return this.get('instrumentModel.selected');
+  }.property('instrumentModel.selected'),
 
   initVisualization: function() {
     Ember.run.scheduleOnce('afterRender', this, function() {
@@ -31,6 +42,17 @@ export default Ember.Component.extend({
   actions: {
     play: function() {
       this.get('instrumentModel.network').play();
+    },
+
+    toggleSelected: function() {
+      this.set('instrumentModel.selected',
+        !this.get('instrumentModel.selected'));
+    },
+
+    makeLive: function() {
+      var makeLiveHandler = this.get('makeLiveHandler'),
+          instrumentModel = this.get('instrumentModel');
+      this.get('targetObject').send(makeLiveHandler, instrumentModel);
     }
   }
 });

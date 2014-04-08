@@ -20,7 +20,7 @@
   </div>
   <div class="row instruments">
     {{#each parentNetworks}}
-      {{graph-visualizer instrumentModel=this}}
+      {{instrument-parent instrumentModel=this}}
     {{else}}
       <div class="col-md-12">
         No Networks

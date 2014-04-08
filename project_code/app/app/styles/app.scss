@@ -34,10 +34,13 @@ html, body {
   } // eo .instruments
 
   .instrument {
+    position: relative;
     margin: 5px 0 35px 0;
     padding: 5px;
     height: 300px;
+    width: 100%;
     border: 2px $borderColor solid;
+    cursor: pointer;
 
     .controls {
       position: absolute;
@@ -45,6 +48,14 @@ html, body {
       text-align: left;
       border: 0;
       padding: 0 10px 0 0;
+    }
+
+    &:hover {
+      background: $hoverColor;
+    }
+
+    &.selected {
+      background: $selectedColor;
     }
   }
 
@@ -63,21 +74,9 @@ html, body {
     border: 2px $borderColor solid;
     
     .child {
-      position: relative;
-      width: 100%;
       height: 250px;
       margin: 5px;
-      border: 2px $borderColor solid;
-      cursor: pointer;
-
-      &:hover {
-        background: $hoverColor;
-      }
-
-      &.selected {
-        background: $selectedColor;
-      }
-    }    
+    }
   }
 
   .liveToggle {
@@ -89,6 +88,7 @@ html, body {
     height: 25px;
     background: white;
     border: 1px solid black;
+    margin: 5px;
 
     &:hover .liveIcon{
       background: lightcoral;
