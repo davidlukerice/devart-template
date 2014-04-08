@@ -54,19 +54,15 @@ export default Ember.Controller.extend({
     return children;
   }.property('parentNetworks.@each'),
 
-  selectedChildNetworks: function() {
-    var selectedNetworks = [];
-      _.forEach(this.get('childNetworks').toArray(), function(child) {
-        if (child.get('selected'))
-          selectedNetworks.push(child);
-      });
+  selectedNetworks: function() {
+    var selectedParents = _.filter(this.get('parentNetworks'), 'selected');
+    var selectedChildren = _.filter(this.get('childNetworks'), 'selected');
+    return _.union(selectedParents, selectedChildren);
+  }.property('parentNetworks.@each.selected', 'childNetworks.@each.selected'),
 
-      return selectedNetworks;
-  }.property('childNetworks.@each.selected'),
-
-  noChildrenSelected: function() {
-    return this.get('selectedChildNetworks').length <= 0;
-  }.property('selectedChildNetworks.@each'),
+  noNetworksSelected: function() {
+    return this.get('selectedNetworks').length <= 0;
+  }.property('selectedNetworks.@each'),
 
   onkeyPressHandler: null,
   setupKeyEvents: function() {
@@ -102,7 +98,7 @@ export default Ember.Controller.extend({
         self.send('refreshGeneration');
       }
       // Goto next generation
-      else if (e.keyCode === PLUS_CODE && !self.get('noChildrenSelected')) {
+      else if (e.keyCode === PLUS_CODE && !self.get('noNetworksSelected')) {
         e.preventDefault();
         self.send('nextGeneration');
       }
@@ -137,9 +133,15 @@ export default Ember.Controller.extend({
     },
 
     nextGeneration: function() {
+      var selected = this.get('selectedNetworks');
+      // reset selected and isLive
+      _.forEach(selected, function(network) {
+        network.set('selected', false);
+        network.set('isLive', false);
+      });
+
       // push the currently selected networks on top
-      this.get('content.networks').pushObject(
-        this.get('selectedChildNetworks'));
+      this.get('content.networks').pushObject(selected);
       scrollToBottom();
     },
 

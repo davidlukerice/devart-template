@@ -44,7 +44,7 @@
     <div class="col-md-12">
       <button class="btn btn-primary" {{action "backGeneration"}} {{bind-attr disabled="noPreviousParents"}}><span class="glyphicon glyphicon-step-backward"></span> BACK</button>
       <button class="btn btn-primary" {{action "refreshGeneration"}}><span class="glyphicon glyphicon-refresh"></span> REFRESH</button>
-      <button class="btn btn-primary" {{action "nextGeneration"}} {{bind-attr disabled="noChildrenSelected"}}>NEXT <span class="glyphicon glyphicon-step-forward"></span></button>
+      <button class="btn btn-primary" {{action "nextGeneration"}} {{bind-attr disabled="noNetworksSelected"}}>NEXT <span class="glyphicon glyphicon-step-forward"></span></button>
       <br>
       {{!--
       Evolution Step Size <input type="range" min="0" max="1" disabled><br>
