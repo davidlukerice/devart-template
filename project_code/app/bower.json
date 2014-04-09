@@ -14,6 +14,7 @@
     "asNEAT": "#master",
     "asNEAT-visualizer": "#master",
     "lodash": "~2.4.1",
-    "d3": "~3.4.3"
+    "d3": "~3.4.3",
+    "WebMIDIAPIShim": "git://github.com/cwilso/WebMIDIAPIShim.git#gh-pages"
   }
 }
