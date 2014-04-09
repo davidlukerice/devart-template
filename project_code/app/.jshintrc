@@ -9,7 +9,8 @@
     "Em": true,
     "DS": true,
     "$": true,
-    "_": true
+    "_": true,
+    "navigator": true
   },
   "node" : false,
   "browser" : false,

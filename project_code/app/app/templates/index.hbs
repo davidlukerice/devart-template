@@ -79,11 +79,11 @@
   Inputs<br>
   <button type="button"
     {{action toggleOnscreenPiano}}
-    {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Onscreen Piano</button>
+    {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Onscreen Piano</button><br>
+
+  {{midi-piano instrument=activeInstrument.network}}
 </div>
 
 {{#if  usingOnscreenPiano}}
   {{onscreen-piano instrument=activeInstrument.network}}
 {{/if}}
-
-{{midi-piano instrument=activeInstrument.network}}
