@@ -1,3 +1,4 @@
+var Utils = require('asNEAT/utils')['default'];
 
 // requires chrome 33 with chrome://flags/#enable-web-midi enabled
 // influenced from midi.js at https://github.com/cwilso/midi-synth
@@ -5,8 +6,17 @@ export default Ember.Component.extend({
   // Passed in
   instrument: null,
  
+  // list of MIDI controllers detected
   inputList: [],
   selectedInput: null,
+
+  // whether the sustain pedal is down or not
+  sustaining: false,
+
+  // {noteNumber: function}
+  releaseHandlers: {},
+  // {noteNumber: keyIsDown(bool)}
+  keysAreDown: {},
 
   setupMIDI: function() {
     var self = this,
@@ -20,7 +30,7 @@ export default Ember.Component.extend({
 
       var inputList=midiAccess.inputs();
 
-      // If any of the inputs have "keyboard" in them, selected them first...
+      // If any of the inputs have "keyboard" or "qx25" in them, selected them first
       _.forEach(inputList, function(input, i) {
         var str=input.name.toString();
         if (str.toLowerCase().indexOf("keyboard") !== -1 ||
@@ -44,8 +54,7 @@ export default Ember.Component.extend({
 
   onSelectedMIDIChange: function() {
     var self = this,
-        input = this.get('selectedInput'),
-        A4NUMBER = 69;
+        input = this.get('selectedInput');
     
     input.onmidimessage = function(ev) {
       var cmd = ev.data[0] >> 4;
@@ -53,42 +62,103 @@ export default Ember.Component.extend({
       var noteNumber = ev.data[1];
       var velocity = ev.data[2];
 
-      if (channel == 9)
+      //Utils.log('cmd:'+cmd+' ch'+channel+' note:'+noteNumber+' Veloc:'+velocity);
+
+      if (channel === 9)
         return;
-      if ( cmd==8 || ((cmd==9)&&(velocity==0)) ) { // with MIDI, note on with velocity zero is the same as note off
+      if ( cmd===8 || ((cmd===9)&&(velocity===0)) ) { // with MIDI, note on with velocity zero is the same as note off
         // note off
-        noteOff( noteNumber );
-      } else if (cmd == 9) {
+        self.onKeyUp(noteNumber);
+      } else if (cmd === 9) {
         // note on
-        noteOn( noteNumber, velocity/127.0);
-      } else if (cmd == 11) {
-        //controller( noteNumber, velocity/127.0);
-      } else if (cmd == 14) {
+        self.onKeyDown(noteNumber, velocity/127.0);
+      } else if (cmd === 11) {
+        // Sustain pedal on
+        if (noteNumber === 64 && velocity === 127) {
+          self.set('sustaining', true);
+        }
+        // Sustain pedal off
+        else if (noteNumber === 64 && velocity === 0) {
+          self.set('sustaining', false);
+        }
+        // mod wheel with veloc 0-127
+        else if (noteNumber === 1) {
+          //controller( noteNumber, velocity/127.0);
+        }
+      } else if (cmd === 14) {
         // pitch wheel
         //pitchWheel( ((velocity * 128.0 + noteNumber)-8192)/8192.0 );
+      } else if (cmd === 13) {
+        // aftertouch with noteNumber 0-127 (same for all notes)
       }
     };
+  }.observes('selectedInput'),
 
-    function noteOn(noteNumber, velocity) {
-      console.log('noteOn: '+noteNumber + " @ "+velocity);
-      // todo playHold
-      // todo velocity
-      var steps = noteNumber - A4NUMBER;
-      var instrument = self.get('instrument');
-      
-      var noteOscillators = instrument.getNoteOscillatorNodes();
-      _.forEach(noteOscillators, function(node) {
-        node.stepFromRootNote = steps;
-      });
+  sustainingChange: function() {
+    var self = this,
+        sustaining = this.get('sustaining'),
+        keysAreDown = this.get('keysAreDown');
+    if (sustaining)
+      return;
 
-      instrument.play();
+    // Check all notes if they are still pressed or not when
+    // the sustain pedal is released
+    _.forEach(keysAreDown, function(isDown, note) {
+      if (!sustaining && !isDown) {
+        self.turnOffNote(note);
+      }
+    });
+  }.observes('sustaining'),
 
-      //releaseHandler = instrument.playHold();
-      //this.set('releaseHandler', releaseHandler);
+  onKeyDown: function(note, velocity) {
+    // TODO: use velocity?
+    this.get('keysAreDown')[note] = true;
+    if (!this.noteIsPlaying(note))
+      this.turnOnNote(note, velocity);
+  },
+  onKeyUp: function(note) {
+    this.get('keysAreDown')[note] = false;
+    this.tryTurnOffNote(note);
+  },
+
+  noteIsPlaying: function(note) {
+    return typeof this.get('releaseHandlers')[note] === 'function';
+  },
+
+  turnOnNote: function(note, velocity) {
+    var instrument = this.get('instrument'),
+        A4NUMBER = 69,
+        steps = note - A4NUMBER,
+        releaseHandlers = this.get('releaseHandlers'),
+        releaseHandler = this.get('releaseHandlers')[note];
+
+    if (typeof releaseHandler === 'function')
+      releaseHandler();
+
+    if (!instrument)
+      throw "No Instrument to Play";
+
+    var noteOscillators = instrument.getNoteOscillatorNodes();
+    _.forEach(noteOscillators, function(node) {
+      node.stepFromRootNote = steps;
+    });
+
+    releaseHandler = instrument.playHold();
+    releaseHandlers[note] = releaseHandler;
+  },
+
+  // turn note off if sustain pedal is not down
+  tryTurnOffNote: function(note) {
+    if (!this.get('sustaining'))
+      this.turnOffNote(note);
+  },
+
+  turnOffNote: function(note) {
+    var releaseHandlers = this.get('releaseHandlers'),
+        handler = releaseHandlers[note];
+    if (typeof handler === "function") {
+      handler();
+      releaseHandlers[note] = false;
     }
-    function noteOff(noteNumber){
-      console.log('noteOff: '+noteNumber);
-    }
-
-  }.observes('selectedInput')
+  }
 });

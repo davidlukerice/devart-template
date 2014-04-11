@@ -1,6 +1,8 @@
 var Utils = require('asNEAT/utils')['default'];
 
 export default Ember.Component.extend({
+  tagName: 'span',
+
   // parameters
   note: "a4",
   hotkey: "q",
@@ -8,8 +10,6 @@ export default Ember.Component.extend({
   instrument: null,
   hotkeyLayout: "colemakHotkey",
   sustaining: false,
-  
-  tagName: 'span',
 
   releaseHandler: null,
   keyIsDown: false,
@@ -103,10 +103,8 @@ export default Ember.Component.extend({
   },
 
   tryReleaseNote: function() {
-    var sustaining = this.get('sustaining');
-    if (!sustaining) {
+    if (!this.get('sustaining'))
       this.turnOffInstrument();
-    }
   },
 
   turnOffInstrument: function() {
