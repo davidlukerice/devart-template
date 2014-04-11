@@ -16,6 +16,8 @@ export default Ember.Controller.extend({
   usingOnscreenPiano: true,
   usingMIDI: true,
 
+  showHelp: false,
+
   activeInstrument: null,
 
   noPreviousParents: function() {
@@ -163,6 +165,10 @@ export default Ember.Controller.extend({
 
     toggleMIDI: function() {
       this.set('usingMIDI', !this.get('usingMIDI'));
+    },
+
+    toggleHelp: function() {
+      this.set('showHelp', !this.get('showHelp'));
     },
 
     makeLive: function(instrumentModel) {

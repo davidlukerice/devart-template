@@ -54,6 +54,10 @@ html, body {
     &.selected {
       background: $selectedColor;
     }
+
+    .liveToggle {
+      float: right;
+    }
   }
 
   .instrument svg {
@@ -78,8 +82,8 @@ html, body {
 
   .liveToggle {
     position: relative;
+    cursor: pointer;
     display: inline-block;
-    float: right;
     border-radius: 25px;
     width: 25px;
     height: 25px;
@@ -228,6 +232,12 @@ $halfControlsWidth: $controlsWidth / 2;
     }
   }
 }
+
+.toggleText {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .floatingControls {
   position: fixed;
   top: 50px;
