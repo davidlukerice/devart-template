@@ -81,7 +81,14 @@
     {{action toggleOnscreenPiano}}
     {{bind-attr class=":btn :btn-primary :btn-xs usingOnscreenPiano:active"}}>Onscreen Piano</button><br>
 
-  {{midi-piano instrument=activeInstrument.network}}
+  <br>
+  
+  <button type="button"
+    {{action toggleMIDI}}
+    {{bind-attr class=":btn :btn-primary :btn-xs usingMIDI:active"}}>MIDI</button><br>
+  {{#if usingMIDI}}
+    {{midi-piano instrument=activeInstrument.network}}
+  {{/if}}
 </div>
 
 {{#if  usingOnscreenPiano}}

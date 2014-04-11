@@ -14,6 +14,7 @@ export default Ember.Controller.extend({
   content: null,
 
   usingOnscreenPiano: true,
+  usingMIDI: true,
 
   activeInstrument: null,
 
@@ -158,6 +159,10 @@ export default Ember.Controller.extend({
       Ember.run.scheduleOnce('afterRender', function() {
         $(document).scrollTop(scrollAmount);
       });
+    },
+
+    toggleMIDI: function() {
+      this.set('usingMIDI', !this.get('usingMIDI'));
     },
 
     makeLive: function(instrumentModel) {

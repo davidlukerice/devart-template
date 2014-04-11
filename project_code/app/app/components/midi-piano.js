@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   // list of MIDI controllers detected
   inputList: [],
   selectedInput: null,
+  lastSelectedInput: null,
 
   // whether the sustain pedal is down or not
   sustaining: false,
@@ -54,8 +55,13 @@ export default Ember.Component.extend({
 
   onSelectedMIDIChange: function() {
     var self = this,
+        lastInput = this.get('lastSelectedInput'),
         input = this.get('selectedInput');
     
+    if (lastInput && typeof lastInput.onmidimessage === 'function')
+      lastInput.onmidimessage = null;
+    this.set('lastSelectedInput', input);
+
     input.onmidimessage = function(ev) {
       var cmd = ev.data[0] >> 4;
       var channel = ev.data[0] & 0xf;
@@ -160,5 +166,16 @@ export default Ember.Component.extend({
       handler();
       releaseHandlers[note] = false;
     }
+  },
+
+  willDestroy: function() {
+    this._super();
+    var lastInput = this.get('lastSelectedInput'),
+        input = this.get('selectedInput');
+    
+    if (lastInput && typeof lastInput.onmidimessage === 'function')
+      lastInput.onmidimessage = null;
+    if (input && typeof input.onmidimessage === 'function')
+      input.onmidimessage = null;
   }
 });
